@@ -23,5 +23,8 @@ urlpatterns = [
     path("test/",views.test),
     path("about/",views.aboutus),
     path("contactus/",views.contactus),
+    path("movies/",views.movies),
+    path("news/",views.news),
+    path("shows/",views.shows),
     path("",views.home),
 ]

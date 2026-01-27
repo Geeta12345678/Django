@@ -12,3 +12,14 @@ def contactus(request):
 
 def home(request):
      return render(request,"home.html")
+
+def movies(request):
+     return render(request,"movies.html")
+
+def shows(request):
+     return render(request,"shows.html")
+
+def news(request):
+     return render(request,"news.html")
+
+
