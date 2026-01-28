@@ -22,4 +22,9 @@ def shows(request):
 def news(request):
      return render(request,"news.html")
 
+def recipe(request):
+     ingredient ={"maggie","tomato"}
+     data= {"name":"meggie","time": 2,"ingredient":ingredient}
+     return render(request,"recipe.html",data)
+
 
