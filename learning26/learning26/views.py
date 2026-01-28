@@ -27,4 +27,9 @@ def recipe(request):
      data= {"name":"meggie","time": 2,"ingredient":ingredient}
      return render(request,"recipe.html",data)
 
+def teams(request):
+     playerlist={"VK","Bhuvenshwar kumar","yash Dayal","Rajat Patidar"}
+     data1={"teamname":"RCB","cap":"red","playerlist":playerlist}
+     return render(request,"teams.html",data1)
+
 
