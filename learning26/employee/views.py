@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from .models import Employee
 from .forms import EmployeeForm,CourseForm,StaffForm,ToyForm
 
@@ -111,4 +111,29 @@ def craeteToy(request):
     else:
         form=ToyForm()
         return render(request,"employee/createToyForm.html",{"form":form})
+    
+def deleteEmployee(request,id):
+    ##delete from employees where id = 1
+    print("id from url = ",id)
+    Employee.objects.filter(id=id).delete()
+    return redirect("employeeList")    
+
+def filterEmployee(request):
+    print("filter employee called...")
+    employees = Employee.objects.filter(age__gte=25).values()
+    print("filter employees = ",employees)
+    #return redirect("employeeList")
+    return render(request,"employee/employeeList.html",{"employees":employees})
+
+def sortEmployee(request, id):
+
+    if id == 1:
+        employees = Employee.objects.order_by('age')   # ASC
+    elif id == 2:
+        employees = Employee.objects.order_by('-age')  # DESC
+    else:
+        employees = Employee.objects.all()
+
+    return render(request, 'employee/employeeList.html', {'employees': employees})
+
     
