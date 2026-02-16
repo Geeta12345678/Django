@@ -4,7 +4,7 @@ from .forms import EmployeeForm,CourseForm,StaffForm,ToyForm
 
 def employeeList(request):
     #employees = Employee.objects.all() #select * from employee
-    employees = Employee.objects.all().values()
+    employees = Employee.objects.all().order_by("id").values()
     #employees = Employee.objects.all().values_list()
     print(employees)
     return render(request, 'employee/employeeList.html',{"employees":employees})
@@ -136,4 +136,12 @@ def sortEmployee(request, id):
 
     return render(request, 'employee/employeeList.html', {'employees': employees})
 
-    
+def updateEmployee(request,id):
+    employee = Employee.objects.get(id=id)
+    if request.method == "POST":
+        form = EmployeeForm(request.POST, instance=employee)
+        form.save()
+        return redirect("employeeList")
+    else:
+        form = EmployeeForm(instance=employee)
+        return render(request,"employee/updateemployee.html",{"form":form}) 
