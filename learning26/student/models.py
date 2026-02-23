@@ -102,6 +102,8 @@ class subject(models.Model):
             db_table="subject"
         def __str__(self):
            return self.subjectName
+        
+        
          
           
     

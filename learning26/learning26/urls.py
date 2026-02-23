@@ -20,7 +20,7 @@ from .import views
 from django.urls import include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+     path('admin/', admin.site.urls),
     path("test/",views.test),
     path("about/",views.aboutus),
     path("contactus/",views.contactus),
@@ -32,6 +32,7 @@ urlpatterns = [
     path("",views.home),
     path("student/", include("student.urls")),
     path("employee/",include("employee.urls")),
-    path("services/",include("services.urls"))
+    path("services/",include("services.urls")),
+    path("core/",include("core.urls"))
 
 ]
